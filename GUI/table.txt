@@ -1,0 +1,6 @@
+CREATE TABLE homes(
+	id INT 		NOT NULL AUTO_INCREMENT,
+	name varchar(225)	NOT NULL,
+	number_room INT NOT NULL,
+	PRIMARY KEY (id)
+)

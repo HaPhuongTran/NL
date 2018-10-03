@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="get data" id="btnGetData" name="">
+
+</body>
+<script>
+	"SELECT * FROM Rooms WHERE homeId = (SELECT id FROM HomeProject WHERE nameHome = :name"
+
+	select id, id_home, name_room from rooms  where id_home=(select id from home  where name="Home1");
+	var listcountry;
+	$("#btnGetData").click(function(){
+		$.ajax({
+			async : false,
+			method: "GET",
+			url: "https://restcountries.eu/rest/v1/alpha?codes=vn"
+		}).done(function(data){
+			listcountry = data;
+		});
+
+		console.log(listcountry[0].name);
+	})
+</script>
+</html>
+
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+
+$(".row").append("<div class='col-sm-3 room rroom"+count+"'></div>");
+  		$(".rroom"+count).append("<div class='hovereffect hover"+count+"'></div>");
+  		$(".hover"+count).append("<img class='img-fluid img-room' src='images/room-icon.jpg'>");
+  		$(".hover"+count).append("<div class='overlay olay"+count+"'></div>");
+  		$(".olay"+count).append("<input id='name_input' name='name_input' type ='text' placeholder = 'Enter name room'>");
+  		$(".olay"+count).append("<p class= 'adbtn"+count+"'></p>");
+  		$(".adbtn"+count).append("<button class = 'btn_enter'>Enter Room</button>");
+  		count++;
+
+$(document).ready(function(){
+
+	// $('.btn_enter').click(function(){
+ //    	var numberRoom = $(".overlay #name_input").val();
+ //    	send request to server
+	//     $.ajax({
+	//     	method: "POST",
+	//     	async: false,
+ //      		contentType: "application/json",
+ //      		data: {Name:numberRoom},
+	// 		url: "http://localhost:8080/smarthome/create",
+	// 		dataType: "jsonp"
+	// 	});
+ //    });
+	//get number from show_from.js
+
+  	var getNameHome = localStorage.getItem("storageNameHome");
+  	var count = 1;
+  	$(".button-add").click(function(){
+  		$(".row").append("<div class='col-sm-3 room'></div>");
+  		$(".room").append("<div class='hovereffect'></div>");
+		$(".hovereffect").append("<img class='img-fluid img-room' src='images/room-icon.jpg'>");
+		$(".hovereffect").append("<div class='overlay'></div>");
+		$(".overlay").append("<input id='name_input' name='name_input' type ='text' placeholder = 'Enter name room'>");
+		$(".overlay").append("<p></p>");
+		$(".overlay p").append("<button class = 'btn_enter'>Enter Room</button>");
+  	});
+	// for(var i = 0; i<getNumRoom; i++){
+	// 	$(".row").append("<div class='col-sm-3 room'></div>");
+	// }
+	// $(".room").append("<div class='hovereffect'></div>");
+	// $(".hovereffect").append("<img class='img-fluid img-room' src='images/room-icon.jpg'>");
+	// $(".hovereffect").append("<div class='overlay'></div>");
+	// $(".overlay").append("<input id='name_input' name='name_input' type ='text' placeholder = 'Enter name room'>");
+	// $(".overlay").append("<p></p>");
+	// $(".overlay p").append("<button class = 'btn_enter'>Enter Room</button>");
+
+});

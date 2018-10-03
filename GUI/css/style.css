@@ -1,0 +1,111 @@
+.start_screen {
+	padding: 0px;
+	margin: auto;
+}
+
+.start_screen img {
+	position: fixed;
+	z-index: -1;
+	width: 100%; height: 100%;
+}
+
+.nav_bar{
+	width: 100%;
+	position: absolute;
+	z-index: 2; 
+	background-color: rgba(0, 39, 176, 0.0);
+	height: 120px;
+}
+.nav_bar_text{ 
+	color: #fff; 
+	font-size: 16px;
+}
+.nav_bar_logo { 
+	color: #fff; 
+	font-size: 50px; 
+	margin-left: 4%; 
+	font-family:Satisfy;
+}
+.nav_bar_list {margin-left: 35%;}
+
+.nav_bar_item {padding: 20px;}
+
+.hovereffect {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+
+.hovereffect .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.hovereffect:hover .overlay {
+  background-color: rgba(72, 255, 254, 0.4);
+}
+
+.hovereffect h2{
+	text-transform: uppercase;
+	width: 100%;
+	position: fixed;
+	font-family: Oleo Script;
+	color: #fff;
+	text-align: center;
+	font-size: 50px;
+	background: rgba(0,0,0,0.6);
+	padding: 30px;
+	top: 20%;
+	transform: translateX(-150%);
+    transition: all 0.7s ease-in-out;
+}
+
+.hovereffect:hover h2 {
+  transform: translateX(0%);
+}
+ 
+.hovereffect a.info {
+	text-decoration: none;
+	font-size: 30px;
+	text-transform: uppercase;
+	color: #fff;
+	border: 1px solid #fff;
+	opacity: 0;
+	padding: 20% 42%;
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	transition: all 0.4s ease-in-out;
+	font-weight: normal;
+	background: rgba(0,0,0,0.2);
+}
+
+.hovereffect:hover a.info{
+	opacity: 1;
+}
+
+.hovereffect a.info:hover{
+	box-shadow: 0 0 5px #fff;
+}
+
+.contain_form{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	z-index:3;
+	width: 30%;
+	margin: auto;
+	background-color: white;
+	padding: 20px;
+}
+
+.contain_form h2{
+	text-align: center;
+}
