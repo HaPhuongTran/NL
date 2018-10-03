@@ -1,0 +1,9 @@
+body{
+	background-image: linear-gradient(180deg, rgba(8, 182, 232, 0.4), white);
+	position: absolute;
+	z-index: -1;
+}
+
+.add-btn{
+	color: white !important;
+}
