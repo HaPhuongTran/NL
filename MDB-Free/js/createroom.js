@@ -113,6 +113,7 @@ $(document).ready(function(){
 		$(".add-component"+addCount).click(function(){
 			//edit tag "<a class='trigger teal lighten-4 component"+countRoom+"'>No component in this room</a>" 
 			// become multiselect
+			// create new branch before edit
 		});
 	}
 
