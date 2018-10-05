@@ -6,8 +6,8 @@ $(document).ready(function(){
 	var dataRoomGet;
 	var listRoom;
 	var nameRoom;
-
 	$(".room-table").hide();
+
 	//Begin get home
 	$.ajax({
 			async : false,
@@ -33,35 +33,38 @@ $(document).ready(function(){
 
 
 	for(loadRoom; loadRoom < listRoom.length; loadRoom++){
-		appentRoom(loadRoom);
+		appendRoom(loadRoom);
 		$(".nameroom"+loadRoom).val(listRoom[loadRoom].nameRoom);
 		$(".idroom"+loadRoom).val(listRoom[loadRoom].id);
-		save(loadRoom);
+		saveHome(loadRoom);
+		addcomponent(loadRoom);
 	}
 
 
-	function appentRoom(countRoom){
+	function appendRoom(countRoom){
   		$("tbody").append(
   			"<tr class = 'row"+countRoom+"'>"
   				+ "<td class = 'roomnamecol"+countRoom+"'>"
-  				+ "<input placeholder='Room Name' type='text' id='nameroom' class='form-control nameroom"+countRoom+"'>"
-  				+ "<input type='hidden' class='form-control idroom"+countRoom+"'>"
+	  				+ "<input placeholder='Room Name' type='text' id='nameroom' class='form-control nameroom"+countRoom+"'>"
+	  				+ "<input type='hidden' class='form-control idroom"+countRoom+"'>"
   				+ "</td>"
 
   				+ "<td class = 'componentcol"+countRoom+"'>"
-  				+ "<a class='trigger teal lighten-4 component"+countRoom+"'>No component in this room</a>"
-  				+ "<a class='trigger info-color text-white add-component"+countRoom+"'>Add<i class='fa fa-plus ml-2'></i></a>"
+  					+ "<a class='trigger info-color text-white addDevice"+countRoom+"' data-toggle='modal' data-target='.tableDecive'>Detail<i class='fa fa-plus ml-2'></i></a>"
+  				+ "</td>"
+
+  				+ "<td class = 'homenamecol"+countRoom+"'>"
+  					+ "<p class = 'homename'></p>"
   				+ "</td>"
 
   				+ "<td class = 'closecol"+countRoom+"'>"
-  				+ "<a><i class='fa fa-save mx-1 save-btn"+countRoom+"'></i></a>"
-  				+ "<a><i class='fa fa-times mx-1 delete-btn"+countRoom+"'></i></a>"
+	  				+ "<a><i class='fa fa-save mx-1 save-btn"+countRoom+"'></i></a>"
+	  				+ "<a><i class='fa fa-times mx-1 delete-btn"+countRoom+"'></i></a>"
   				+ "</td>"
   			+"</tr>");
   		deleteRoom(countRoom);
   		$(".room-table").show();
 	}
-
 
 	function deleteRoom(countRoom){
 		$(".delete-btn"+countRoom).click(function(){
@@ -70,8 +73,8 @@ $(document).ready(function(){
 	}
 
 
-	function save(saveCount){
-		  	$(".save-btn"+saveCount).click(function(){
+	function saveHome(saveCount){
+		$(".save-btn"+saveCount).click(function(){
   			nameRoom = $(".nameroom"+ saveCount).val();
   			var idRoom = parseInt($(".idroom"+ saveCount).val());
   			if(isNaN(idRoom)|| idRoom == null){
@@ -110,17 +113,20 @@ $(document).ready(function(){
 	}
 
 	function addcomponent(addCount){
-		$(".add-component"+addCount).click(function(){
-			//edit tag "<a class='trigger teal lighten-4 component"+countRoom+"'>No component in this room</a>" 
-			// become multiselect
-			// create new branch before edit
+		$(".addDevice"+addCount).click(function(){
+			$(".deviceRoom").html(getNameHome);
+			$(".homeNameDevice").text($(".nameroom").val());
 		});
 	}
 
+	function saveDeviceHome(){
+
+	}
 
   	$(".add-btn").click(function(){
-  		appentRoom(loadRoom + 1);
- 		save(loadRoom + 1);
+  		appendRoom(loadRoom + 1);
+ 		saveHome(loadRoom + 1);
+ 		addcomponent(loadRoom + 1);
 		loadRoom++;
   	});
 });
