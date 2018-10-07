@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	// $("#includedContent").load("http://localhost:8080/index.html");
 	var getNameHome = localStorage.getItem("storageNameHome");
 	var dataHome;
 	var status_create;
@@ -6,6 +7,7 @@ $(document).ready(function(){
 	var dataRoomGet;
 	var listRoom;
 	var nameRoom;
+	var idRoom;
 	$(".room-table").hide();
 
 	//Begin get home
@@ -36,8 +38,9 @@ $(document).ready(function(){
 		appendRoom(loadRoom);
 		$(".nameroom"+loadRoom).val(listRoom[loadRoom].nameRoom);
 		$(".idroom"+loadRoom).val(listRoom[loadRoom].id);
-		saveHome(loadRoom);
-		addcomponent(loadRoom);
+		saveRoom(loadRoom);
+		deleteRoom(loadRoom);
+		roomDetail(loadRoom);
 	}
 
 
@@ -49,12 +52,16 @@ $(document).ready(function(){
 	  				+ "<input type='hidden' class='form-control idroom"+countRoom+"'>"
   				+ "</td>"
 
+  				// + "<td class = 'componentcol"+countRoom+"'>"
+  				// 	+ "<a class='trigger info-color text-white addDevice"+countRoom+"' data-toggle='modal' data-target='.tableDecive'>Add<i class='fa fa-plus ml-2'></i></a>"
+  				// + "</td>"
+
   				+ "<td class = 'componentcol"+countRoom+"'>"
-  					+ "<a class='trigger info-color text-white addDevice"+countRoom+"' data-toggle='modal' data-target='.tableDecive'>Detail<i class='fa fa-plus ml-2'></i></a>"
+  					+ "<a class='trigger info-color text-white detail"+countRoom+"' data-toggle='modal' data-target='.roomDetail'>Detail<i class='fa'></i></a>"
   				+ "</td>"
 
   				+ "<td class = 'homenamecol"+countRoom+"'>"
-  					+ "<p class = 'homename'></p>"
+  					+ "<p class = 'homename'>"+getNameHome+"</p>"
   				+ "</td>"
 
   				+ "<td class = 'closecol"+countRoom+"'>"
@@ -62,21 +69,35 @@ $(document).ready(function(){
 	  				+ "<a><i class='fa fa-times mx-1 delete-btn"+countRoom+"'></i></a>"
   				+ "</td>"
   			+"</tr>");
-  		deleteRoom(countRoom);
   		$(".room-table").show();
 	}
 
-	function deleteRoom(countRoom){
-		$(".delete-btn"+countRoom).click(function(){
-			$(".row"+countRoom).remove();
+	function deleteRoom(deleteCountRoom){
+		$(".delete-btn"+deleteCountRoom).click(function(){
+			nameRoom = $(".nameroom"+ deleteCountRoom).val();
+			idRoom = idRoom = parseInt($(".idroom"+ deleteCountRoom).val());
+			$(".row"+deleteCountRoom).remove();
+			
+
+			//Begin delete room
+		    $.ajax({
+				async : false,
+				method: "post",
+				data: JSON.stringify({id: idRoom, nameRoom:nameRoom }),
+				contentType: "application/json",
+				url: "http://localhost:8080/smarthome/deleteroom"
+			}).done(function(data, textStatus, xhr){
+				status_create = xhr.status;
+			});
+		// //End delete room
 		});
 	}
 
 
-	function saveHome(saveCount){
+	function saveRoom(saveCount){
 		$(".save-btn"+saveCount).click(function(){
   			nameRoom = $(".nameroom"+ saveCount).val();
-  			var idRoom = parseInt($(".idroom"+ saveCount).val());
+  			idRoom = parseInt($(".idroom"+ saveCount).val());
   			if(isNaN(idRoom)|| idRoom == null){
   				idRoom = 0;
   			}
@@ -91,7 +112,6 @@ $(document).ready(function(){
 				status_create = xhr.status;
 			});
 			//End create room
-
 			getRoom(saveCount);
 		});
 	}
@@ -113,9 +133,11 @@ $(document).ready(function(){
 	}
 
 	function addcomponent(addCount){
-		$(".addDevice"+addCount).click(function(){
-			$(".deviceRoom").html(getNameHome);
-			$(".homeNameDevice").text($(".nameroom").val());
+	}
+
+	function roomDetail(roomDetailCount){
+		$(".detail"+roomDetailCount).click(function(){
+			$(".roomName").html($(".nameroom"+ roomDetailCount).val());
 		});
 	}
 
@@ -125,8 +147,9 @@ $(document).ready(function(){
 
   	$(".add-btn").click(function(){
   		appendRoom(loadRoom + 1);
- 		saveHome(loadRoom + 1);
- 		addcomponent(loadRoom + 1);
+ 		saveRoom(loadRoom + 1);
+ 		deleteRoom(loadRoom + 1);
+ 		roomDetail(loadRoom + 1);
 		loadRoom++;
   	});
 });

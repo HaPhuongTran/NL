@@ -20,19 +20,33 @@ public class RoomServiceImpl implements RoomService {
     RoomDao roomDao;
 	
 	@Transactional
+	@Override
 	public void createRoom(Rooms room) {
-		roomDao.addRoom(room);	
+		List<Rooms> listRooms = roomDao.getListRooms(room.getHomeId().getNameHome());
+		if(listRooms.size() > 0) {
+			for(int i =0; i<listRooms.size(); i++) {
+				if(listRooms.get(i).getNameRoom() == room.getNameRoom()) {
+					System.out.print("can't save");
+				}
+			}
+		}
+		else {
+			roomDao.addRoom(room);	
+		}
 	}
 	
 	@Transactional
+	@Override
 	public void updateRoom(Rooms room) {
 		roomDao.updateRoom(room);
 	}
 	
+	@Override
 	public List<Rooms> getListRooms(String name_home){
 		return roomDao.getListRooms(name_home);
 	}
 	
+	@Override
 	public Rooms getRoom(String nameRoom) {
 		return roomDao.getRoom(nameRoom);
 	}
@@ -40,5 +54,12 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public void saveOrUpdate(Rooms room) {
 		roomDao.saveOrUpdate(room);
+	}
+
+	@Transactional
+	@Override
+	public void deleteRoom(Rooms room) {
+		roomDao.deleteRoom(room);
+		
 	}
 }

@@ -48,4 +48,10 @@ public class RoomController {
 		return roomService.getListRooms(name_home);
 	}
 	
+	@RequestMapping(value = "/deleteroom", method = RequestMethod.POST, headers="Accept=application/json")
+	public ResponseEntity<HttpStatus> deleteRoom(@RequestBody Rooms room){
+		roomService.deleteRoom (room);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
 }

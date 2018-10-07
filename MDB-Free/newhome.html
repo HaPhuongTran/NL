@@ -56,7 +56,8 @@
     <thead>
       <tr>
         <th>Room Name</th>
-        <th>Component</th>
+        <!-- <th>Component</th> -->
+        <th>Detail</th>
         <th>Home Name</th>
       </tr>
     </thead>
@@ -78,33 +79,120 @@
   </table>
 </div>
 
-<!-- Full Height Modal Right -->
-<div class="modal fade right tableDecive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-full-height modal-right" role="document">
+<!-- Full Height Modal Top -->
+<div class="modal fade top roomDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-frame modal-top modal-full-height modal-right" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title w-100" id="myModalLabel">CHOOSING DEVICE</h4>
+        <h4 class="modal-title w-100 roomName"></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Home Name:&#160;&#160;&#160;<span class="homeNameDevice"></span>
-        Room Name:&#160;&#160;&#160;<span class="deviceRoom"></span>
-        <hr>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate2">
-          <label class="custom-control-label" for="defaultIndeterminate2">Default indeterminate</label>
-        </div>
       </div>
       <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-outline-info waves-effect addcomponent-btn" data-toggle='modal' data-target='.tableDecive'>Add Component</button>
+        <button type="button" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
 <!-- Full Height Modal Right -->
+<div class="modal fade right tableDecive"  role="dialog">
+  <div class="modal-dialog modal-full-height modal-right" role="document">
+    <div class="modal-content">
+      <div class="modal-header choice-device">
+        <h4 class="modal-title" id="myModalLabel">CHOOSING DEVICE</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate2">
+          <label class="custom-control-label" for="defaultIndeterminate2">Humidity Device</label><br>
+        </div>
+        <div class="md-form input-group">
+          <input type="text" class="form-control" name="H-value" value = "1">
+          <div class="input-group-append">
+            <button class="btn btn-info btn-up2" type="button">+</button>
+            <button class="btn btn-info btn-down2" type="button">-</button>
+          </div>
+        </div>
+        <hr>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate3">
+          <label class="custom-control-label" for="defaultIndeterminate3">Temperature Device</label>
+        </div>
+        <div class="md-form input-group">
+          <input type="text" class="form-control" name="T-value" value = "1">
+          <div class="input-group-append">
+            <button class="btn btn-info btn-up3" type="button">+</button>
+            <button class="btn btn-info btn-down3" type="button">-</button>
+          </div>
+        </div>
+        <hr>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate4">
+          <label class="custom-control-label" for="defaultIndeterminate4">Air-Conditioner</label>
+        </div>
+        <div class="md-form input-group">
+          <input type="text" class="form-control" name="A-value" value = "1">
+          <div class="input-group-append">
+            <button class="btn btn-info btn-up4" type="button">+</button>
+            <button class="btn btn-info btn-down4" type="button">-</button>
+          </div>
+        </div>
+        <hr>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate5">
+          <label class="custom-control-label" for="defaultIndeterminate5">Heating Equipment</label>
+        </div>
+        <div class="md-form input-group">
+          <input type="text" class="form-control" name="HE-value" value = "1">
+          <div class="input-group-append">
+            <button class="btn btn-info btn-up5" type="button">+</button>
+            <button class="btn btn-info btn-down5" type="button">-</button>
+          </div>
+        </div>
+        <hr>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate6">
+          <label class="custom-control-label" for="defaultIndeterminate6">Nebulizer</label>
+        </div>
+        <div class="md-form input-group">
+          <input type="text" class="form-control" name="N-value" value = "1">
+          <div class="input-group-append">
+            <button class="btn btn-info btn-up6" type="button">+</button>
+            <button class="btn btn-info btn-down6" type="button">-</button>
+          </div>
+        </div>
+        <hr>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultIndeterminate7">
+          <label class="custom-control-label" for="defaultIndeterminate7">Dehumidifier</label>
+        </div>
+        <div class="md-form input-group">
+          <input type="text" class="form-control" name="D-value" value = "1">
+          <div class="input-group-append">
+            <button class="btn btn-info btn-up7" type="button">+</button>
+            <button class="btn btn-info btn-down7" type="button">-</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="includedContent"></div>
+<!-- Full Height Modal Right -->
+  <!-- Full Height Modal Top -->
   <!-- SCRIPTS -->
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

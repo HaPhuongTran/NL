@@ -21,7 +21,7 @@ public class Rooms {
 	@JoinColumn(name = "id_home", nullable = false)
 	private HomeProject homeId;
 	
-	@Column(name = "name_room", unique=true)
+	@Column(name = "name_room", nullable = false)
 	private String nameRoom;
 	
 	public Rooms() {}
@@ -29,29 +29,29 @@ public class Rooms {
 	public Rooms(int id) {
 		this.id = id;
 	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
+
 	public int getId() {
 		return id;
 	}
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public HomeProject getHomeId() {
+		return homeId;
+	}
+
+	public void setHomeId(HomeProject homeId) {
+		this.homeId = homeId;
+	}
+
 	public String getNameRoom() {
 		return nameRoom;
 	}
 
 	public void setNameRoom(String nameRoom) {
 		this.nameRoom = nameRoom;
-	}
-
-	public void setHomeId(HomeProject homeId) {
-		this.homeId = homeId;
-	}
-	
-	public int getHomeId() {
-		return homeId.getId();
 	}
 	
 }
