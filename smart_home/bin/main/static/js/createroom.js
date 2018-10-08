@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	$(".roomDetail").load("detailroom.html");
-	$(".tableDecive").load("componentroom.html");
+	$(".tableDecive").load("componentroom.html", function(){
+		saveDeviceHome();
+	});
 	var getNameHome = localStorage.getItem("storageNameHome");
 	var dataHome;
 	var status_create;
@@ -136,11 +138,12 @@ $(document).ready(function(){
 	function addcomponent(){
 		var chkArray = [];
 		$(".component-check:checked").each(function(){
-			chkArray.push($("#a").val());
+			chkArray.push($(this).val());
 		});
+		// alert(chkArray);
 		var selected;
 		selected = chkArray.join(',') ;
-		alert(selected.length+1);
+		alert(selected);
 	}
 
 	function roomDetail(roomDetailCount){

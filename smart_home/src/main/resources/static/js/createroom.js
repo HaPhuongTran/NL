@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	$(".roomDetail").load("detailroom.html");
-	$(".tableDecive").load("componentroom.html");
+	$(".tableDecive").load("componentroom.html", function(){
+		saveDeviceHome();
+	});
 	var getNameHome = localStorage.getItem("storageNameHome");
 	var dataHome;
 	var status_create;
@@ -133,35 +135,35 @@ $(document).ready(function(){
 		$(".idroom"+getRoomCount).val(dataRoomGet.id);
 	}
 
+	function addcomponent(){
+		var chkArray = [];
+		$(".component-check:checked").each(function(){
+			chkArray.push($(this).val());
+		});
+		// alert(chkArray);
+		var selected;
+		selected = chkArray.join(',') ;
+		alert(selected);
+	}
+
 	function roomDetail(roomDetailCount){
 		$(".detail"+roomDetailCount).click(function(){
 			$(".roomName").html($(".nameroom"+ roomDetailCount).val());
 		});
 	}
-//Begin there in tomorrow
-	// function addcomponent(){
-	// 	var chkArray = [];
-	// 	$(".component-check:checked").each(function(){
-	// 		chkArray.push($("#a").val());
-	// 	});
-	// 	var selected;
-	// 	selected = chkArray.join(',') ;
-	// 	alert(selected.length+1);
-	// }
 
-	
-
-	// function saveDeviceHome(){
-	// 	$(".btn-ok").click(function(){
-	// 		addcomponent();
-	// 	});
-	// }
+	function saveDeviceHome(){
+		$(".btn-ok").click(function(){
+			addcomponent();
+		});
+	}
 
   	$(".add-btn").click(function(){
   		appendRoom(loadRoom + 1);
  		saveRoom(loadRoom + 1);
  		deleteRoom(loadRoom + 1);
  		roomDetail(loadRoom + 1);
+ 		saveDeviceHome();
 		loadRoom++;
   	});
 });

@@ -22,12 +22,16 @@ public class RoomServiceImpl implements RoomService {
 	@Transactional
 	@Override
 	public void createRoom(Rooms room) {
+		int exit =0;
 		List<Rooms> listRooms = roomDao.getListRooms(room.getHomeId().getNameHome());
 		if(listRooms.size() > 0) {
 			for(int i =0; i<listRooms.size(); i++) {
-				if(listRooms.get(i).getNameRoom() == room.getNameRoom()) {
-					System.out.print("can't save");
+				if(listRooms.get(i).getNameRoom() == room.getNameRoom()){
+					exit = 1;
 				}
+			}
+			if(exit == 0) {
+				roomDao.addRoom(room);
 			}
 		}
 		else {
